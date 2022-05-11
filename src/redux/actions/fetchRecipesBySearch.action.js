@@ -3,10 +3,10 @@ import { API_URL, API_KEY } from "../../config";
 import axios from 'axios';
 
 export const fetchRecipesBySearch = (searchTerm) => async dispatch => {
+    dispatch({
+        type: FETCH_RECIPES_BY_SEARCH_INITIATE
+    })
     try {
-        dispatch({
-            type: FETCH_RECIPES_BY_SEARCH_INITIATE
-        })
         let recipes=[];
         if (!searchTerm) {
             const sessionState = sessionStorage.getItem('randomRecipes');

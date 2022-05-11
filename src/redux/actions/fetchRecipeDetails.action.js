@@ -4,10 +4,10 @@ import axios from 'axios';
 import noImage from "../../images/no_image.jpg";
 
 export const fetchRecipeDetails = (recipeId) => async dispatch => {
+    dispatch({
+        type: FETCH_RECIPE_DETAILS_INITIATE
+    })
     try {
-        dispatch({
-            type: FETCH_RECIPE_DETAILS_INITIATE
-        })
         let summary = [];
         const recipeById = await axios.get(`${API_URL}/${recipeId}/information?includeNutrition=true&apiKey=${API_KEY}`);
         const data = recipeById.data;
